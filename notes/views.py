@@ -1,6 +1,17 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Categories,Note
 
 
-def hi(request):
-    return render(request,'base.html')
+
+def nav(request):
+    categories = Categories.objects.all()
+    return render(request, 'notes/landing.html', {'categories': categories})
+
+def note_by_category(request, category_title):
+    category = Categories.objects.get(title=category_title)
+    note = Note.objects.filter(category=category)
+    context = {
+        'category': category,
+        'note': note
+    }
+    return render(request, 'notes/categories.html', context)

@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+{%block detail%}
+{% for item in note %}
+
+  <div class="furniture-item">
+    <h2>{{ item.title }}</h2>
+    <p>{{ item.text}}</p>
+    <p>{{ite.reminder}}</p>
+    <p>{{ category.title }}</p>
+  </div>
+{% empty %}
+  <p>No furniture found for this category.</p>
+{% endfor %}
+{%endblock%}
+

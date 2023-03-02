@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{%block title%}
+Note App
+{%endblock%}
+{% block cat %}
+		<h1>Categories:</h1>
+		<ul class="categories">
+		{% for item in categories %}
+		    <li><a href="{% url 'category' category_title=item %}">{{ item.title }}</a></li>
+		{% endfor %}
+		</ul>
+		{% endblock %}
+{% block footer%}
+<footer>
+    <p>&copy; 2023 Note App</p>
+</footer>
+{%endblock%}
+
